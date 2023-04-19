@@ -1,0 +1,93 @@
+.Main-bg {
+    position: relative;
+  }
+  
+  .Main-bg img  {
+    width: 98.93vw;
+    height: 90%;
+    position: relative;
+    z-index: -1;
+  }
+  
+  .top {
+    position:absolute;
+    top: 200px;
+    left: 35%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    color: #edefee;
+  }
+
+  .Main-weather{
+    margin-top: -20px;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
+  
+  .Main-city{
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
+
+  .degrees-top{
+    font-size:50px;
+    margin-top: -1%;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
+  .top img {
+    width: 5vw;
+    height: 5%;
+    margin-left: 22%;
+    margin-top: -10%;
+  }
+  
+  .Main-details {
+    position: absolute;
+    top: 35%;
+    left: 60%;
+    color: #edefee;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    
+  }
+  
+  .Details {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .Main-details > div {
+    display: flex;
+    justify-content: space-between;
+    width: 120%;
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .Pressure-meassured{
+    margin-left: 5%;
+  }
+  
+  .Main-details > div > p {
+    margin: 0;
+  }
+  
+  .Main-Daily {
+    position: absolute;
+    bottom: 230px;
+    left: 70px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #edefee;
+  }
+  
