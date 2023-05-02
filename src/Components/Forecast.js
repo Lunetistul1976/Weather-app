@@ -52,8 +52,8 @@ const Forecast = ({ data}) => {
                 <p className={`day ${index === 6 ? "first-day" : ""}${index === 3 ? "fourth-day" : ""}${index === 2 ? "fifth-day" : ""}${index === 5 ? "second-day" : ""}${index === 1 ? "six-day" : ""}${index === 0 ? "seven-day" : ""}${index === 4 ? "third-day" : ""}`} 
                 style={item.weather &&( item.weather[0].main==="Clear") ? {marginLeft: "-44.5vw"} : (item.weather[0].main==="Clouds"|| item.weather[0].main==="Haze" || item.weather[0].main==="Mist") ? {marginLeft: "-43.2vw"} : (item.weather[0].main==="Rain"|| item.weather[0].main==="Thunderstorm") ? {marginLeft: "-45.5vw"} : null}>
                   {daysOfWeek[nextSevenDays[index].getDay()]}</p>
-                <p className="temperature"> {Math.round((item.main.temp_max))} &deg;C/{Math.round((item.main.temp_min))} &deg;C</p>
-                <p className="description" style={item.weather &&( item.weather[0].main==="Clear") ? {marginLeft: "0.01vw"} :null}> {item.weather[0].description}</p>
+                <p className="temperature" style={{ marginLeft: `${(item.main.temp_max < 10 || item.main.temp_min < 10) ? "1vw" : "0"}` }}> {Math.round((item.main.temp_max))} &deg;C/{Math.round((item.main.temp_min))} &deg;C</p>
+                <p className="description" style={item.weather &&( item.weather[0].description==="broken clouds") ? {marginLeft: "-1.78vw"}:( item.weather[0].description==="scattered clouds")?{marginLeft: "-3.3vw"}:( item.weather[0].description==="few clouds")?{marginLeft: "1.3vw"}:( item.weather[0].description==="overcast clouds")?{marginLeft: "-1.4vw"} :null}> {item.weather[0].description}</p>
                 
                 </div>
                 </AccordionItemButton>
