@@ -1,9 +1,163 @@
 .Main-Daily {
+  position: absolute;
+  top: 31vw;
+  left: 4.73vw;
+  font-size: 2.025vw;
+  font-weight: bold;
+  color: #edefee;
+  z-index: 2;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.Day-bg{
+  z-index: 5;
+}
+.daily-item-container {
+  position: relative;
+  z-index: 1;
+}
+
+.daily-item {
+ margin-top: -7.15vw;
+ margin-bottom: -11.82vw;
+  margin-left: 5.2vw;
+  justify-content: space-between;
+  align-items: start;
+  display: flex;
+  text-align: start;
+  border-radius: 1.35vw;
+  padding: 0.175vw 1.6875vw;
+  width: 84.24vw;
+  height: 5.13vw;
+  z-index: 3;
+  background-color: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.daily-item img {
+  width: 4.32vw;
+  height: 3.51vw;
+  margin-right: 1.35vw;
+  margin-top: 0.81vw;
+}
+
+.daily-item p {
+  font-size: 1.5525vw;
+  font-weight: bold;
+  color: black;
+  display: block;
+  margin-left: 0;
+
+}
+
+.day {
+  margin-left: 5.2vw;
+  display: block;
+  width: 8.5%;
+  align-self:flex-start;
+ }
+ /*
+ .six-day{
+  margin-right: -6.345vw;
+ }
+ .first-day{
+  margin-right: -2.025vw;
+ }
+ .fourth-day{
+  margin-right: -5.4vw;
+ }
+
+ .fifth-day{
+  margin-right: -4.995vw;
+ }
+ .second-day{
+  margin-right: -0.675vw;
+ }
+ */
+ .fifth-day{
+  margin-right: -1.3vw;
+ }
+ .third-day{
+  margin-right: -0.675vw;
+ }
+.description {
+  margin-right: -43.075vw;
+  display: block;
+}
+
+.temperature {
+  margin-left: 3.375vw;
+  order: 3;
+  display: block;
+}
+
+
+@media screen and (max-width: 770px){
+
+    .Main-Daily {
     position: absolute;
-    bottom: 230px;
-    left: 70px;
-    font-size: 30px;
+    top: 81vw;
+    left: 4.73vw;
+    font-size: 2.025vw;
     font-weight: bold;
     color: #edefee;
+    z-index: 2;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+    
+    .Day-bg {
+    z-index: 5;
+    }
+    
+    .daily-item-container {
+    position: relative;
+    z-index: 1;
+    }
+    
+    .daily-item {
+    margin-top: -34vw;
+    margin-bottom: 19vw;
+    margin-left: 5.2vw;
+    justify-content: space-between;
+    display: flex;
+    border-radius: 1.35vw;
+    padding: 0.175vw 1.6875vw;
+    width: 84.24vw;
+    height: 5.13vw;
+    z-index: 3;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .daily-item img {
+    width: 4.32vw;
+    height: 3.51vw;
+    margin-right: 1.35vw;
+    margin-top: 0.81vw;
+    }
+    
+    .daily-item p {
+    text-align: start;
+    font-size: 1.8vw;
+    font-weight: bold;
+    color: black;
+    margin-top: 1.4vw;
+    margin-bottom: 8.6vw;
+    }
+    
+    .day {
+    margin-left: -43.075vw;
+    display: block;
+    
+    }
+    
+    .description {
+    margin-right: -43.075vw;
+    }
+    
+    .temperature {
+    margin-left: 3.375vw;
+    order: 3;
+    }
   }
-  

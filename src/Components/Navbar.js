@@ -1,16 +1,12 @@
 import React from "react";
 import "../CSS/Navbar.css";
 
-const Navbar = ({searchLocation,setLocation,location}) => {
- /* const [search, setSearch] = useState(null);
-  const [selectedCity, setSelectedCity] = useState(null);
+const Navbar = ({
+  searchLocation,
+  location,
+  setLocation
+}) => {
   
-  
-  const handleChange = (searchData) => {
-    setSearch(searchData.value);
-    setSelectedCity(null);
-  };
-*/
 
   return (
     <nav className="Navbar-bg">
@@ -22,7 +18,6 @@ const Navbar = ({searchLocation,setLocation,location}) => {
           onChange={event =>setLocation(event.target.value)}
           onKeyDown={event =>searchLocation(event)}
         />
-
       </div>
     </nav>
   );

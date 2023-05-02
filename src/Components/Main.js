@@ -5,22 +5,23 @@ import Clouds from '../Images/Clouds.webp'
 import Sun from '../Images/Sun.png'
 import Rain from '../Images/rain.webp'
 
-const Main=({data}) =>{
+const Main=({data,selectedCity}) =>{
   return(
     <div className="Main-bg">
-      <img src={BG} alt='Weather-app background'  />
-    
+      <img src={BG} alt="Weather-app background" />
       <div className="top">
-        <h2 className="Main-city">{data.name},{data.sys.country}</h2>
+        {data.name?
+        <h2 className="Main-city">{data.name},{data.sys.country}</h2>:null}
+       
         {data.weather?
         <p className="Main-weather"> {data.weather[0].main} </p>: null}
-        {data.weather && data.weather[0].main==="Clouds"?
+        {data.weather && (data.weather[0].main==="Clouds" || data.weather[0].main==="Haze" || data.weather[0].main==="Mist")?
           <img src={Clouds} alt="Clouds"/>:null}
         
          {data.weather && data.weather[0].main==="Clear"?
           <img src={Sun} alt="Clear"/>:null}
          
-          {data.weather && data.weather[0].main==="Rain" && data.weather[0].main==="Thunderstorm"?
+          {data.weather &&( data.weather[0].main==="Rain" || data.weather[0].main==="Thunderstorm")?
           <img src={Rain} alt="Rain"/>:null}
 
         {data.main?
@@ -50,6 +51,7 @@ const Main=({data}) =>{
           <p className="Pressure-meassured" style={{marginLeft:"6%"}}>{data.main.pressure}hPa</p> :null}
         </div>
       </div>}
+
     </div>
   )
 }

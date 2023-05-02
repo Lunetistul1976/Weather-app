@@ -1,17 +1,20 @@
 .Main-bg {
-    position: relative;
-  }
+  position: relative;
+    }
+    
   
   .Main-bg img  {
-    width: 98.93vw;
-    height: 90%;
+    width: 98.932vw;
+    height: 81.6075vw;
     position: relative;
-    z-index: -1;
+margin-bottom: -0.9vw;
+z-index: -2;
+flex-grow: 1;
   }
   
   .top {
     position:absolute;
-    top: 200px;
+    top: 12.5vw;
     left: 35%;
     z-index: 1;
     display: flex;
@@ -22,56 +25,57 @@
   }
 
   .Main-weather{
-    margin-top: -20px;
-    font-size: 25px;
+    margin-top: -1.35vw;
+    font-size: 1.69vw;
     font-weight: bold;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   }
   
   .Main-city{
-    font-size: 30px;
+    font-size: 2.03vw;
     font-weight: bold;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   }
 
   .degrees-top{
-    font-size:50px;
-    margin-top: -1%;
+    font-size:3.38vw;
+    margin-top: -0.1%;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   }
   .top img {
     width: 5vw;
     height: 5%;
-    margin-left: 22%;
+    margin-left: 31%;
     margin-top: -10%;
   }
   
   .Main-details {
     position: absolute;
-    top: 35%;
+    top: 19.35vw;
     left: 60%;
     color: #edefee;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 1.35vw;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    z-index: 2;
     
   }
   
   .Details {
-    font-size: 30px;
+    font-size: 2.03vw;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 0.68vw;
   }
   
   .Main-details > div {
     display: flex;
     justify-content: space-between;
     width: 120%;
-    margin-bottom: 10px;
-    font-size: 25px;
+    margin-bottom: 0.68vw;
+    font-size: 1.69vw;
     font-weight: bold;
   }
   .Pressure-meassured{
@@ -81,13 +85,67 @@
   .Main-details > div > p {
     margin: 0;
   }
-  
-  .Main-Daily {
-    position: absolute;
-    bottom: 230px;
-    left: 70px;
-    font-size: 30px;
-    font-weight: bold;
-    color: #edefee;
+
+  @media screen and (max-width: 880px )and (min-width: 769px){
+    .Main-bg img{
+      width: 100vw; 
+    }
+    .top img {
+      width: 5vw;
+      height: 5%;
+      margin-left: 31%;
+      margin-top: -10%;
+    }
   }
+ 
+  @media screen and (max-width: 769px) {
+    /* apply styles for screens with a maximum width of 768px, such as smaller, vertical screens */
+    .Main-bg img {
+      height: 180vw; /* increase the height to 120% of the viewport width */
+      width: 100vw;
+      margin-bottom: -1.8vw; /* adjust the margin to maintain the aspect ratio */
+    }
+    .top img {
+      width: 5vw;
+      height: 5%;
+      margin-left: 22%;
+      margin-top: -10%;
+    }
+    .top {
+      position:absolute;
+      top: 52.5vw;
+      left: 35%;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      color: #edefee;
+    }
   
+
+    .Main-details {
+      position: absolute;
+      top: 59.3vw;
+      left: 60%;
+      color: #edefee;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1.35vw;
+      text-shadow: -0.8px -0.8px 0 #000,0.8px -0.8px 0 #000, -0.8px 0.8px 0 #000, 0.8px 0.8px 0 #000; 
+      z-index: 2;
+      
+    }
+    .Main-weather{
+      text-shadow: -0.8px -0.8px 0 #000,0.8px -0.8px 0 #000, -0.8px 0.8px 0 #000, 0.8px 0.8px 0 #000; 
+    }
+    .Main-city{
+      text-shadow: -0.8px -0.8px 0 #000,0.8px -0.8px 0 #000, -0.8px 0.8px 0 #000, 0.8px 0.8px 0 #000;
+    }
+    .degrees-top{
+      text-shadow: -0.8px -0.8px 0 #000,0.8px -0.8px 0 #000, -0.8px 0.8px 0 #000, 0.8px 0.8px 0 #000;
+    }
+
+  }
