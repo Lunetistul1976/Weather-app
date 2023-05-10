@@ -5,7 +5,7 @@
 .Navbar-search input{
     position: absolute;
     display: flex;
-    top: 3.38vw;
+    top: 2.5vw;
     left: 32.4vw;
     width: 37.1vw;
     height: 3.34vw;
@@ -27,11 +27,35 @@
     font-size: 1.69vw;
     font-weight: 500;
   }
-
-  .Navbar-matched-cities{
+ 
+  .suggestions{
+    position: absolute;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+    margin-top: 6.5vw;
+    margin-left: 32.4vw;
+    border-radius: 0.35vw;
+    background-color: #edefee;
+    width: 37.1vw;
+    
+  }
+  .suggestion{
+    z-index: 3;
+    border-bottom: 1px solid gray;
+    bottom: -20vw;
+    font-size: 1.35vw;
+    font-weight: 350;
     color: #1B1212;
   }
-
+  .suggestion:hover {
+    background-color: blue;
+    color: #edefee;
+    font-weight: 500;
+    border-bottom: 1px solid blue;
+    border-radius: 0.14vw;
+  }
+  
   @media screen and (max-width: 770px){
     .Navbar-bg{
       z-index: 2;
@@ -40,12 +64,31 @@
   .Navbar-search input{
       position: absolute;
       display: flex;
-      top: 43.38vw;
-      left: 32.4vw;
+      top: 33.38vw;
+      left: 32vw;
       width: 37.1vw;
       height: 3.34vw;
       border-radius: 1.35vw;
       z-index: 2;
+  }
+  .suggestions{
+    position: absolute;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+    margin-top: 38.5vw;
+    margin-left: 32.4vw;
+    border-radius: 0.35vw;
+    background-color: #edefee;
+    width: 37.1vw;
+    
+  }
+  .suggestion:hover {
+    background-color: blue;
+    color: #edefee;
+    font-weight: 500;
+    border-bottom: 1px solid blue;
+    border-radius: 0.14vw;
   }
   
   .Navbar-search input[type="text"]::placeholder {

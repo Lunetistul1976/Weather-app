@@ -1,13 +1,17 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import Navbar from './Components/Navbar'
-import Main from './Components/Main'
-import Forecast from './Components/Forecast'
-import axios from'axios'
+import Navbar from './Components/Navbar';
+import Main from './Components/Main';
+import Forecast from './Components/Forecast';
+import axios from 'axios';
 
-
-
-
+const geoApiOptions = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': 'd49948f7f9msh31004b1b44f6034p1b3e47jsn6c2a0f663014',
+    'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com',
+  },
+};
 
 function App() {
   const [data, setData] = useState({});
@@ -15,7 +19,7 @@ function App() {
   const [location, setLocation] = useState('');
   const [lat, setLat] = useState('');
   const [lon, setLon] = useState('');
-  const [suggestedCities,setSuggestedCities]=useState('');
+  const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     const fetchForecast = async () => {
@@ -29,17 +33,16 @@ function App() {
     }
   }, [lat, lon]);
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=ea2bd25a434ab2ebbe74bcc8934a6616`;
-  const GeoLocationUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=ea2bd25a434ab2ebbe74bcc8934a6616`;
+  const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=ea2bd25a434ab2ebbe74bcc8934a6616`;
+  const geoLocationApiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=ea2bd25a434ab2ebbe74bcc8934a6616`;
 
   const searchLocation = async (event) => {
     if (event.key === "Enter") {
-  
-      axios.get(url).then((response) => {
+      axios.get(weatherApiUrl).then((response) => {
         setData(response.data);
       });
   
-      axios.get(GeoLocationUrl).then((response) => {
+      axios.get(geoLocationApiUrl).then((response) => {
         if (response.data.length > 0) {
           const { lat, lon } = response.data[0];
           setLat(lat);
@@ -50,21 +53,60 @@ function App() {
       setLocation("");
     }
   };
+
+  const onSuggestionsFetchRequested = async ({ value }) => {
+    const geoApiUrl = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?minPopulation=600000&namePrefix=${value}&limit=4&sort=-population&hateoasMode=false&fields=name`;
+    const response = await axios.get(geoApiUrl, geoApiOptions);
+    setSuggestions(response.data.data);
+  };
+
+  const onSuggestionsClearRequested = () => {
+    
+      setSuggestions([]);
+  
+    
+  };
   
 
+  const onSuggestionSelected = ({ suggestion }) => {
+    if (suggestion) {
+      const { name, latitude, longitude } = suggestion;
+    setLocation(name);
+    setLat(latitude);
+    setLon(longitude);
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=7&units=metric&appid=ea2bd25a434ab2ebbe74bcc8934a6616`;
+    axios.get(weatherApiUrl).then((response) => {
+      setData(response.data);
+    });
+    axios.get(forecastUrl).then((response) => {
+      setForecast(response.data);
+    });
+    }
+    
+  };
+  
+
+  const getSuggestionValue = (suggestion) => suggestion.name;
+
+  const renderSuggestion = (suggestion) => <div onClick={() => setLocation(suggestion.name)}>{suggestion.name},{suggestion.countryCode}</div>;
+
+  
   return (
-    <div className="App_main" >
+    <div className="App_main">
       <Navbar
-        searchLocation={searchLocation}
         setLocation={setLocation}
+        searchLocation={searchLocation}
         location={location}
-        suggestedCities={suggestedCities}
-        setSuggestedCities={setSuggestedCities}
-      />
+        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+        onSuggestionsClearRequested={onSuggestionsClearRequested}
+        onSuggestionSelected={onSuggestionSelected}
+        getSuggestionValue={getSuggestionValue}
+        renderSuggestion={renderSuggestion}
+        suggestions={suggestions}
+        />
       <Main data={data} />
       {forecast && <Forecast data={forecast} />}
     </div>
   );
 }
 export default App;
-
