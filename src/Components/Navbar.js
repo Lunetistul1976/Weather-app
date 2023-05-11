@@ -16,7 +16,7 @@ const Navbar = ({
 
   const handleFetchSuggestions = _debounce((value) => {
     onSuggestionsFetchRequested({ value });
-  }, -500);
+  }, 500);
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -27,12 +27,12 @@ const Navbar = ({
       handleFetchSuggestions( value );
     }
   };
+ 
 
   return (
     <nav className="Navbar-bg">
       <div className="Navbar-search">
         <input
-       
           type="text"
           placeholder="Enter Location"
           value={location}
@@ -51,7 +51,7 @@ const Navbar = ({
                 key={getSuggestionValue(suggestion)}
                 className="suggestion"
                 onClick={() => {
-                  onSuggestionSelected(suggestion);
+                  onSuggestionSelected(suggestion)
                   onSuggestionsClearRequested();
                 }}
               >

@@ -14,13 +14,13 @@ import Rain from '../Images/rain.webp'
 const Forecast = ({ data}) => {
   if(data.list==null)return null
 
-  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"];
   const today = new Date();
   const nextSevenDays = Array.from({length: 7}, (_, i) => {
     const date = new Date(today);
-    date.setDate(today.getDate() + i + 1);
+    date.setDate(today.getDate() + i   );
     return date;
-  });
+  }).reverse();
   
  
   return (
@@ -31,7 +31,7 @@ const Forecast = ({ data}) => {
       
       <Accordion allowZeroExpanded >
       
-        {data.list.slice(0,7).map((item, index) => (
+        {data.list.slice(0,7).reverse().map((item, index) => (
 
           <AccordionItem key={index}>
             <AccordionItemHeading >
@@ -53,7 +53,7 @@ const Forecast = ({ data}) => {
                 style={item.weather &&( item.weather[0].main==="Clear") ? {marginLeft: "-44.5vw"} : (item.weather[0].main==="Clouds"|| item.weather[0].main==="Haze" || item.weather[0].main==="Mist") ? {marginLeft: "-43.2vw"} : (item.weather[0].main==="Rain"|| item.weather[0].main==="Thunderstorm") ? {marginLeft: "-44vw"} : null}>
                   {daysOfWeek[nextSevenDays[index].getDay()]}</p>
                 <p className="temperature" style={{ marginLeft: `${(item.main.temp_max < 10 || item.main.temp_min < 10) ? "1vw" : "0"}` }}> {Math.round((item.main.temp_max))} &deg;C/{Math.round((item.main.temp_min))} &deg;C</p>
-                <p className="description" style={item.weather &&( item.weather[0].description==="broken clouds") ? {marginLeft: "-0.78vw"}:( item.weather[0].description==="scattered clouds")?{marginLeft: "-2.6vw"}:( item.weather[0].description==="few clouds")?{marginLeft: "1.3vw"}:( item.weather[0].description==="overcast clouds")?{marginLeft: "-2.6vw"}:( item.weather[0].description==="moderate rain")?{marginLeft: "-2.7vw"}:( item.weather[0].description==="light rain")?{marginLeft: "0.4vw"} :null}> {item.weather[0].description}</p>
+                <p className="description" style={item.weather &&( item.weather[0].description==="broken clouds") ? {marginLeft: "-1.4vw"}:( item.weather[0].description==="scattered clouds")?{marginLeft: "-2.6vw"}:( item.weather[0].description==="few clouds")?{marginLeft: "1.3vw"}:( item.weather[0].description==="overcast clouds")?{marginLeft: "-3.2vw"}:( item.weather[0].description==="moderate rain")?{marginLeft: "-2.7vw"}:( item.weather[0].description==="light rain")?{marginLeft: "0.4vw"} :null}> {item.weather[0].description}</p>
                 
                 </div>
                 </AccordionItemButton>

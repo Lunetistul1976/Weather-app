@@ -5,7 +5,7 @@ import Clouds from '../Images/Clouds.webp'
 import Sun from '../Images/Sun.png'
 import Rain from '../Images/rain.webp'
 
-const Main=({data,selectedCity}) =>{
+const Main=({data}) =>{
   return(
     <div className="Main-bg">
       <img src={BG} alt="Weather-app background" />

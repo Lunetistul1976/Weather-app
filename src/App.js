@@ -37,7 +37,7 @@ function App() {
   const geoLocationApiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=ea2bd25a434ab2ebbe74bcc8934a6616`;
 
   const searchLocation = async (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter"|| event) {
       axios.get(weatherApiUrl).then((response) => {
         setData(response.data);
       });
@@ -68,27 +68,31 @@ function App() {
   };
   
 
-  const onSuggestionSelected = ({ suggestion }) => {
+  const onSuggestionSelected = async ({ suggestion }) => {
     if (suggestion) {
       const { name, latitude, longitude } = suggestion;
-    setLocation(name);
-    setLat(latitude);
-    setLon(longitude);
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=7&units=metric&appid=ea2bd25a434ab2ebbe74bcc8934a6616`;
-    axios.get(weatherApiUrl).then((response) => {
-      setData(response.data);
-    });
-    axios.get(forecastUrl).then((response) => {
-      setForecast(response.data);
-    });
+      setLocation(name);
+  
+      const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=imperial&appid=ea2bd25a434ab2ebbe74bcc8934a6616`;
+      const weatherResponse = await axios.get(weatherApiUrl);
+      setData(weatherResponse.data);
+  
+      const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&cnt=7&units=metric&appid=ea2bd25a434ab2ebbe74bcc8934a6616`;
+      const forecastResponse = await axios.get(forecastUrl);
+      setForecast(forecastResponse.data);
+      setSuggestions([])
     }
-    
   };
   
 
   const getSuggestionValue = (suggestion) => suggestion.name;
 
-  const renderSuggestion = (suggestion) => <div onClick={() => setLocation(suggestion.name)}>{suggestion.name},{suggestion.countryCode}</div>;
+  const renderSuggestion = (suggestion) => (
+    <div onClick={() => onSuggestionSelected({ suggestion })}>
+      {suggestion.name},{suggestion.countryCode}
+    </div>
+  );
+  
 
   
   return (
