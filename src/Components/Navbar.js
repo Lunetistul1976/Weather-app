@@ -16,7 +16,7 @@ const Navbar = ({
 
   const handleFetchSuggestions = _debounce((value) => {
     onSuggestionsFetchRequested({ value });
-  }, 500);
+  }, 200);
 
   const handleChange = (event) => {
     const value = event.target.value;

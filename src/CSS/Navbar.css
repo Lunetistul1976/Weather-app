@@ -5,7 +5,7 @@
 .Navbar-search input{
     position: absolute;
     display: flex;
-    top: 2.5vw;
+    top: 1.8vw;
     left: 32.4vw;
     width: 37.1vw;
     height: 3.34vw;
@@ -33,7 +33,7 @@
     align-items: center;
     cursor: pointer;
     z-index: 1;
-    margin-top: 6.5vw;
+    margin-top: 5.8vw;
     margin-left: 32.4vw;
     border-radius: 0.35vw;
     background-color: #edefee;

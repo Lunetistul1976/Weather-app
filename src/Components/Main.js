@@ -11,18 +11,18 @@ const Main=({data}) =>{
       <img src={BG} alt="Weather-app background" />
       <div className="top">
         {data.name?
-        <h2 className="Main-city">{data.name},{data.sys.country}</h2>:null}
+      <h2 className="Main-city" style={{marginLeft:`${(data.name.length>14)?"-7vw":"0"}`}}>{data.name},{data.sys.country}</h2>:null}
        
         {data.weather?
         <p className="Main-weather"> {data.weather[0].main} </p>: null}
         {data.weather && (data.weather[0].main==="Clouds" || data.weather[0].main==="Haze" || data.weather[0].main==="Mist")?
-          <img src={Clouds} alt="Clouds" />:null}
+          <img src={Clouds} alt="Clouds" style={{marginLeft:`${(data.name.length>14)?"8vw":"31%"}`}}/>:null}
         
          {data.weather && (data.weather[0].main==="Clear"||data.weather[0].main==="Sand")?
-          <img src={Sun} alt="Clear" style={{marginLeft:"25%",marginTop:"-11%"}}/>:null}
+          <img src={Sun} alt="Clear" style={{marginLeft:`${(data.name.length>14)?"8vw":"28.1%"}`,marginTop:"-11%",}}/>:null}
          
           {data.weather &&( data.weather[0].main==="Rain" || data.weather[0].main==="Thunderstorm")?
-          <img src={Rain} alt="Rain" style={{marginLeft:"27%"}}/>:null}
+          <img src={Rain} alt="Rain" style={{marginLeft:`${(data.name.length>14)?"4.6vw":"27%"}`}}/>:null}
 
         {data.main?
         <h2 className="degrees-top" >{((data.main.temp-32)/1.8).toFixed()}°C</h2>:null}

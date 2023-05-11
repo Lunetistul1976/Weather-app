@@ -5,6 +5,9 @@ import Main from './Components/Main';
 import Forecast from './Components/Forecast';
 import axios from 'axios';
 
+
+
+
 const geoApiOptions = {
   method: 'GET',
   headers: {
@@ -68,6 +71,14 @@ function App() {
   };
   
 
+  const getSuggestionValue = (suggestion) => suggestion.name;
+
+  const renderSuggestion = (suggestion) => (
+    <div onClick={() => onSuggestionSelected({ suggestion })}>
+      {suggestion.name},{suggestion.countryCode}
+    </div>
+  );
+  
   const onSuggestionSelected = async ({ suggestion }) => {
     if (suggestion) {
       const { name, latitude, longitude } = suggestion;
@@ -83,18 +94,7 @@ function App() {
       setSuggestions([])
     }
   };
-  
 
-  const getSuggestionValue = (suggestion) => suggestion.name;
-
-  const renderSuggestion = (suggestion) => (
-    <div onClick={() => onSuggestionSelected({ suggestion })}>
-      {suggestion.name},{suggestion.countryCode}
-    </div>
-  );
-  
-
-  
   return (
     <div className="App_main">
       <Navbar
