@@ -53,6 +53,7 @@ const Navbar = ({
                 onClick={() => {
                   onSuggestionSelected(suggestion)
                   onSuggestionsClearRequested();
+                  setLocation("")
                 }}
               >
                 {renderSuggestion(suggestion)}
