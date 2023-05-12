@@ -4,7 +4,7 @@ import Navbar from './Components/Navbar';
 import Main from './Components/Main';
 import Forecast from './Components/Forecast';
 import axios from 'axios';
-
+import Bottleneck from 'bottleneck';
 
 
 
@@ -15,6 +15,11 @@ const geoApiOptions = {
     'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com',
   },
 };
+
+const limiter = new Bottleneck({
+  maxConcurrent: 1,
+  minTime: 18000, // 9 seconds
+});
 
 function App() {
   const [data, setData] = useState({});
@@ -27,7 +32,7 @@ function App() {
   useEffect(() => {
     const fetchForecast = async () => {
       const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=7&units=metric&appid=ea2bd25a434ab2ebbe74bcc8934a6616`;
-      const forecastResponse = await axios.get(forecastUrl);
+      const forecastResponse = await limiter.schedule(() => axios.get(forecastUrl));
       setForecast(forecastResponse.data);
     };
 
@@ -35,6 +40,7 @@ function App() {
       fetchForecast();
     }
   }, [lat, lon]);
+
 
   const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=ea2bd25a434ab2ebbe74bcc8934a6616`;
   const geoLocationApiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=ea2bd25a434ab2ebbe74bcc8934a6616`;

@@ -20,10 +20,10 @@ const Main=({data}) =>{
   marginTop: `${(data.name.length > 20) ? "-1vw" : ""}`}}/>:null}
 
 {data.weather && (data.weather[0].main==="Clear"||data.weather[0].main==="Sand")?
-  <img src={Sun} alt="Clear" style={{marginLeft:`${(data.name.length < 6) ? ((20>data.name.length > 14) ? "4.5vw" : "2.1vw") : ((data.name.length > 20) ? "7.9vw" : "32%")}`,marginTop:"-6%",}}/>:null}
+  <img src={Sun} alt="Clear" style={{marginLeft:`${(data.name.length < 6) ? ((20>data.name.length > 14) ? "4.5vw" : "2.1vw") : ((data.name.length > 20) ? "7.9vw" : "30%")}`,marginTop:"-7%",}}/>:null}
 
 {data.weather &&( data.weather[0].main==="Rain" || data.weather[0].main==="Thunderstorm")?
-  <img src={Rain} alt="Rain" style={{marginLeft:`${(data.name.length < 6) ? ((20>data.name.length > 14) ? "4.6vw" : "1.5vw") : ((data.name.length > 20) ? "8vw" : "31%")}`}}/>:null}
+  <img src={Rain} alt="Rain" style={{marginLeft:`${(data.name.length < 6) ? ((20>data.name.length > 14) ? "4.6vw" : "1.5vw") : ((data.name.length > 20) ? "8vw" : "30%")}`}}/>:null}
 
 
         {data.main?
