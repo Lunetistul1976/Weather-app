@@ -16,16 +16,18 @@ const Main=({data}) =>{
         {data.weather?
         <p className="Main-weather"> {data.weather[0].main} </p>: null}
         {data.weather && (data.weather[0].main==="Clouds" || data.weather[0].main==="Haze" || data.weather[0].main==="Mist")?
-          <img src={Clouds} alt="Clouds" style={{marginLeft:`${(data.name.length>14)?"8vw":"31%"}`}}/>:null}
-        
-         {data.weather && (data.weather[0].main==="Clear"||data.weather[0].main==="Sand")?
-          <img src={Sun} alt="Clear" style={{marginLeft:`${(data.name.length>14)?"8vw":"28.1%"}`,marginTop:"-11%",}}/>:null}
-         
-          {data.weather &&( data.weather[0].main==="Rain" || data.weather[0].main==="Thunderstorm")?
-          <img src={Rain} alt="Rain" style={{marginLeft:`${(data.name.length>14)?"4.6vw":"27%"}`}}/>:null}
+  <img src={Clouds} alt="Clouds" style={{marginLeft:`${(data.name.length < 6) ? ((20>data.name.length > 14) ? "4.6vw" : "2vw") : ((data.name.length > 20) ? "8vw" : "31%")}`,
+  marginTop: `${(data.name.length > 20) ? "-1vw" : ""}`}}/>:null}
+
+{data.weather && (data.weather[0].main==="Clear"||data.weather[0].main==="Sand")?
+  <img src={Sun} alt="Clear" style={{marginLeft:`${(data.name.length < 7) ? ((20>data.name.length > 14) ? "4.5vw" : "2.1vw") : ((data.name.length > 20) ? "7.9vw" : "32%")}`,marginTop:"-6%",}}/>:null}
+
+{data.weather &&( data.weather[0].main==="Rain" || data.weather[0].main==="Thunderstorm")?
+  <img src={Rain} alt="Rain" style={{marginLeft:`${(data.name.length < 7) ? ((20>data.name.length > 14) ? "4.6vw" : "1.5vw") : ((data.name.length > 20) ? "8vw" : "30%")}`}}/>:null}
+
 
         {data.main?
-        <h2 className="degrees-top" >{((data.main.temp-32)/1.8).toFixed()}°C</h2>:null}
+        <h2 className="degrees-top" style={{marginTop: `${(data.name.length > 20) ? "1.5vw" : ""}`}} >{((data.main.temp-32)/1.8).toFixed()}°C</h2>:null}
       </div>
       {data.name !== undefined &&
       <div className="Main-details">
